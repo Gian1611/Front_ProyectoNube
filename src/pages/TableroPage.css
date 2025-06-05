@@ -1,0 +1,139 @@
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile-area {
+  position: relative;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.2s;
+  border: 2px solid transparent;
+}
+
+.avatar:hover {
+  border: 2px solid #ffffff;
+}
+
+.avatar.big {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #2e2e2e;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 250px;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-label {
+  font-size: 0.75rem;
+  color: #a0a0a0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.profile-email {
+  font-size: 0.85rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #3a3a3a; /* tono más oscuro */
+  color: #e0e0e0;
+}
+.board-container {
+  padding: 2rem;
+  background-color: #eef2f7;
+  min-height: 100vh;
+}
+
+.board-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.kanban-board {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.kanban-column {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 300px;
+  min-height: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-column h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #007bff;
+}

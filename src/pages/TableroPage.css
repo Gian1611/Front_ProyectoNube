@@ -137,3 +137,27 @@
   margin-bottom: 1rem;
   color: #007bff;
 }
+
+.add-task-btn {
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background-color: #4338ca;
+}
+
+.new-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}

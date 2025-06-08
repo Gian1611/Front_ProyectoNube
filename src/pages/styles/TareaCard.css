@@ -1,0 +1,33 @@
+.task-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 12px 0;
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 8px solid transparent; /* Esto se sobrescribe inline */
+}
+
+.task-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.task-card strong {
+  font-size: 1.1rem;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.task-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.task-card small {
+  font-size: 0.8rem;
+  color: #888;
+}

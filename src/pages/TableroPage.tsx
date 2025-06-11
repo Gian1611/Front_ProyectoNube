@@ -72,7 +72,7 @@ export default function BoardPage() {
                 <p className="profile-name">
                 {user?.nombre} {user?.apellido}
                 </p>
-                <p className="profile-email">usuario@ejemplo.com</p> {/* Puedes usar username si no hay email */}
+                <p className="profile-email">{user?.role}</p> {/* Puedes usar rol si no hay email */}
               </div>
             </div>
             <button className="logout-btn" onClick={handleLogout}>

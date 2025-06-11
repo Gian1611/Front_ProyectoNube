@@ -1,4 +1,5 @@
 import { User } from "../models/User";
+import { localApi } from "../api/api";
 
 // Usuarios prueba
 let users: User[] = [
@@ -34,6 +35,20 @@ export const registerUser = (user: Omit<User, "id">): { success: boolean; messag
   return { success: true, message: "Usuario registrado con éxito" };
 };
 
-export const loginUser = (username: string, password: string): User | null => {
-  return users.find(u => u.username === username && u.password === password) || null;
+//export const loginUser = (username: string, password: string): User | null => {
+//  return users.find(u => u.username === username && u.password === password) || null;
+//};
+
+export const loginUser = async (username: string, password: string): Promise<{ token: string}> => {
+  //const response = await axios.post(`/auth/login`, { username, password });
+  //return response.data;
+  try {
+    const response = await localApi.post(`/auth/login`, { username, password });
+    console.log(response.data)
+    return response.data; // solo { token }
+  } catch (error: any) {
+    // Propaga el mensaje del backend al componente que use loginUser
+    const message = error.response?.data?.message || "Error de conexión con el servidor";
+    throw new Error(message);
+  }
 };

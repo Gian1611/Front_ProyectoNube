@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUser } from "../services/authService";
+//import { loginUser } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./AuthPages.css";
@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-
+/*
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const user = loginUser(username, password);
@@ -20,6 +20,17 @@ export default function LoginPage() {
       alert("Credenciales incorrectas");
     }
   };
+*/
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    await login(username, password);
+    navigate("/home");
+  } catch (err: any) {
+    alert(err.message);
+  }
+};
 
   return (
     <div className="auth-container">

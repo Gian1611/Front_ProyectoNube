@@ -26,13 +26,37 @@ let users: User[] = [
   }
 ];
 
-export const registerUser = (user: Omit<User, "id">): { success: boolean; message: string } => {
+/*export const registerUser = (user: Omit<User, "id">): { success: boolean; message: string } => {
   const exists = users.some(u => u.username === user.username);
   if (exists) return { success: false, message: "El nombre de usuario ya existe" };
 
   const newUser: User = { ...user, id: Date.now() };
   users.push(newUser);
   return { success: true, message: "Usuario registrado con éxito" };
+};
+*/
+
+export const registerUser = async(
+  nombre: string,
+  apellido: string, 
+  username: string,
+  password: string): Promise<{ message: string}> => {
+      try {
+      const inputData = {
+        "nombre": nombre,
+        "apellido": apellido,
+        "username": username,
+        "password": password,
+      };
+      const response = await localApi.post('/auth/register', inputData);
+      return response.data.message; // Devuelve el mensaje de respuesta del backend
+    } catch (error: any) {
+      console.log('Error1', error.message);
+      console.log('Error2', error.error);
+      throw new Error(
+        error.response?.data?.message || 'Error al registrar usuario en iplm'
+      );
+    }
 };
 
 //export const loginUser = (username: string, password: string): User | null => {
@@ -52,3 +76,4 @@ export const loginUser = async (username: string, password: string): Promise<{ t
     throw new Error(message);
   }
 };
+

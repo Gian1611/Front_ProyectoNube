@@ -42,10 +42,7 @@ npm start
 
 ## 📌 Pendientes / Futuro
 
-- Conexión a API REST real (backend con base de datos).
-- Registro y login reales.
 - Filtrado por prioridades.
-- Arrastrar y soltar tareas.
 - Notificaciones o recordatorios.
 
 ---

@@ -6,18 +6,23 @@ import '../pages/styles/TareaCard.css';
 interface Props {
   tarea: Tarea;
   onDragStart: (e: React.DragEvent, id: number) => void;
+  onClick: (tarea: Tarea) => void;
 }
 
-export default function TareaCard({ tarea, onDragStart }: Props) {
+export default function TareaCard({ tarea, onDragStart, onClick }: Props) {
   return (
     <div
       className="task-card"
       draggable
-      onDragStart={(e) => onDragStart(e, tarea.id)}
-      style={{ borderLeft: `8px solid ${getPrioridadColor(tarea.prioridad)}` }}
+      onClick={() => onClick(tarea)}
+      onDragStart={(e) => onDragStart(e, tarea.tarea_id)}
+      style={{ 
+        borderLeft: `8px solid ${getPrioridadColor(tarea.prioridad)}`,
+        cursor: 'pointer'
+      }}
     >
       <strong>{tarea.titulo}</strong>
-      <p>{tarea.descrip}</p>
+      <p>{tarea.descripcion}</p>
       <small>Prioridad: {tarea.prioridad}</small>
     </div>
   );

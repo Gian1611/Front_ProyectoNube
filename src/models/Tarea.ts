@@ -1,7 +1,7 @@
 export interface Tarea {
-  id: number;
+  tarea_id: number;
   titulo: string;
-  descrip: string;
+  descripcion: string;
   prioridad: "alta" | "media" | "baja";
-  estado: "pendiente" | "en progreso" | "completado";
+  estado: "pendiente" | "en progreso" | "completada";
 }

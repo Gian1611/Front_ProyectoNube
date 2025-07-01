@@ -3,19 +3,24 @@ import { Tarea } from "../models/Tarea";
 
 interface Props {
   onClose: () => void;
-  onAdd: (tarea: Omit<Tarea, "id">) => void;
+  //onAdd: (tarea: Omit<Tarea, "id">) => void;
+  onAdd: (tarea: { titulo: string; descripcion: string; prioridad: Tarea["prioridad"] }) => Promise<void>;
 }
 
 export default function ModalNuevaTarea({ onClose, onAdd }: Props) {
   const [titulo, setTitulo] = useState("");
-  const [descrip, setDescrip] = useState("");
+  const [descripcion, setDescrip] = useState("");
   const [prioridad, setPrioridad] = useState<Tarea["prioridad"]>("media");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!titulo.trim()) return;
-    onAdd({ titulo, descrip, prioridad, estado: "pendiente" });
-    onClose();
+    try {
+      await onAdd({ titulo, descripcion, prioridad });
+      onClose();
+    } catch (err) {
+      alert("Error al agregar tarea");
+    }
   };
 
   return (
@@ -32,7 +37,7 @@ export default function ModalNuevaTarea({ onClose, onAdd }: Props) {
           />
           <textarea
             placeholder="Descripción"
-            value={descrip}
+            value={descripcion}
             onChange={(e) => setDescrip(e.target.value)}
           />
           <select

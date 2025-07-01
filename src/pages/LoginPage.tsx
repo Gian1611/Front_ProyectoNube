@@ -1,5 +1,4 @@
 import { useState } from "react";
-//import { loginUser } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./AuthPages.css";
@@ -9,18 +8,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-/*
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const user = loginUser(username, password);
-    if (user) {
-      login(user);
-      navigate("/home");
-    } else {
-      alert("Credenciales incorrectas");
-    }
-  };
-*/
 
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();

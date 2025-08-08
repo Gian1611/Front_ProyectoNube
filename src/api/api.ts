@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('token'); // o donde guardes tu JWT
+const token = localStorage.getItem('token');
 
 export const localApi = axios.create({
   baseURL: `http://localhost:8080/api`,
@@ -8,11 +8,15 @@ export const localApi = axios.create({
     authorization: `Bearer ${token}`
   }
 });
-/*
-localApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});*/
+
+// Interceptor para añadir el token en *cada* petición
+localApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
